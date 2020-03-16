@@ -1,6 +1,7 @@
 package com.swj.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @create 2020-03-14 17:50
  */
 @Data
+@ToString
 public class Employee { //员工类
     private  long id;
     private  int age;
