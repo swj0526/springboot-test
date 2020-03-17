@@ -20,7 +20,7 @@ public class IndexController {
         if (!StringUtils.isEmpty(userName) && !StringUtils.isEmpty(passWord)) {
             if (passWord.equals("123456")) {
                 session.setAttribute("user", userName);
-                return "redirect:/home";//使用重定向,防止表单重复提交
+                return "redirect:/tohome";//使用重定向,防止表单重复提交
                 //如果不使用重定向,url地址就是这个controller的地址,一刷新这个页面,controller就会在请求一遍
                 //使用了重定向,页面在自动请求一个新页面,url地址变了,在刷新也不存在这个问题
                 // 但是!!!重定向后面跟的是controller地址
