@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
@@ -21,5 +22,12 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public LocaleResolver localeResolver() {
         return new MyLocaleResolver();
     }
+    //注册拦截器
 
+    //这个是视图控制器,这里面同一写好了重定向的页面,这样就不用在写一个controller
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/dashboard.html").setViewName("/home");//登录成功,跳转到首页
+        registry.addViewController("/index.html").setViewName("/");
+    }
 }

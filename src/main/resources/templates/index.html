@@ -13,11 +13,12 @@
 </head>
 
 <body class="text-center">
-<form class="form-signin" action="dashboard.html">
+<form class="form-signin" th:action="@{/loginCheck}" method="post">
     <img class="mb-4" src="/img/bootstrap-solid.svg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.sign}"></h1>
-    <input type="text" class="form-control" th:placeholder="#{login.username}" required="" autofocus="">
-    <input type="password" class="form-control" th:placeholder="#{login.password}" required="">
+    <div style="color: red" th:text="${#httpServletRequest.getAttribute('msg')}"></div>
+    <input type="text" class="form-control" th:placeholder="#{login.username}" required="" autofocus="" name="userName">
+    <input type="password" class="form-control" th:placeholder="#{login.password}" required="" name="passWord">
     <div class="checkbox mb-3">
         <label><input type="checkbox">[[#{login.Remember}]]</label>
     </div>
@@ -25,8 +26,8 @@
         [[#{login.btn}]]
     </button>
     <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-    <a class="btn btn-sm" th:href="@{/index.html(l='zh_CN')}">中文</a>
-    <a class="btn btn-sm" th:href="@{/index.html(l='en_US')}">English</a>
+    <a class="btn btn-sm" th:href="@{/(l='zh_CN')}">中文</a>
+    <a class="btn btn-sm" th:href="@{/(l='en_US')}">English</a>
 </form>
 
 </body>
