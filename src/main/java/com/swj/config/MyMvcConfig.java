@@ -30,6 +30,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/tohome").setViewName("/dashboard");//登录成功,跳转到首页
         registry.addViewController("/").setViewName("/index");
+        registry.addViewController("/tolist").setViewName("/list"); //列表页面
     }
 
     //注册一个拦截器,添加拦截路径,过滤拦截路径
