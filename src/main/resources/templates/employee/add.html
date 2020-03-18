@@ -10,10 +10,10 @@
 
     <title>Dashboard Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/css/dashboard.css" rel="stylesheet">
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
     <style type="text/css">
         /* Chart.js */
 
@@ -43,33 +43,47 @@
 </head>
 
 <body>
-<div th:replace="common/common::header"></div>
+<div th:replace="~{common/common::header}"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="common/common::side"></div>
+        <div th:replace="~{common/common::side}"></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <h2>员工管理列表</h2>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>姓名</th>
-                        <th>年龄</th>
-                        <th>入职时间</th>
-                        <th>部门</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-					<tr th:each="employee : ${employeeList}">
-                     <td th:text="${emloyee}"></td>
+            <form th:action="@{/addOrUpdate}" method="post">
+                <div class="form-group">
+                    <label>姓名</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label>年龄</label>
+                    <input type="number" class="form-control" name="age">
+                </div>
+                <div class="form-group">
+                    <label>性别</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="1"
+                        >
+                        <label class="form-check-label">男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sex" value="0"
+                        >
+                        <label class="form-check-label">女</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>部门</label>
+                    <select class="form-control" name="department.id">
+                        <option th:each="department:${departments}" th:text="${department.getName()}"
+                                th:value="${department.getId()}">
+                        </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">确定添加</button>
+            </form>
 
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+
         </main>
     </div>
 </div>
@@ -77,18 +91,18 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
-<script type="text/javascript" src="/js/popper.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 
 <!-- Icons -->
-<script type="text/javascript" src="/js/feather.min.js"></script>
+<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
 <script>
     feather.replace()
 </script>
 
 <!-- Graphs -->
-<script type="text/javascript" src="/js/Chart.min.js"></script>
+<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
 <script>
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {

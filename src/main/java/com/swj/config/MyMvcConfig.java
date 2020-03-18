@@ -28,9 +28,8 @@ public class MyMvcConfig implements WebMvcConfigurer {
     //这个是视图控制器,这里面同一写好了重定向的页面,这样就不用在写一个controller
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/tohome").setViewName("/dashboard");//登录成功,跳转到首页
-        registry.addViewController("/").setViewName("/index");
-        registry.addViewController("/tolist").setViewName("/list"); //列表页面
+        registry.addViewController("/tohome").setViewName("dashboard");//登录成功,跳转到首页
+        registry.addViewController("/").setViewName("index");
     }
 
     //注册一个拦截器,添加拦截路径,过滤拦截路径

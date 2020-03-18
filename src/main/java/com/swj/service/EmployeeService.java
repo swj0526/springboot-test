@@ -22,4 +22,14 @@ public class EmployeeService {
         return list;
     }
 
+    public void updateOrAdd(Employee employee) {
+        employeeDao.add(employee);
+    }
+
+    public Employee getEmployee(int id) {
+        return employeeDao.getEmployeeById(id);
+    }
+    public void delete(int id){
+        employeeDao.delete(id);
+    }
 }

@@ -28,7 +28,7 @@ public class DepartmentDao { //初始化部门数据
         departmentTable.put(5, new Department(5, "后勤部"));
 
     }
-
+/*
     //新增数据的时候要有主键新增
     public int key() {
         id++;
@@ -46,23 +46,25 @@ public class DepartmentDao { //初始化部门数据
         Department departmentDB = departmentTable.get(department.getId());
         departmentDB.setName(department.getName());
         departmentTable.remove(department.getId());
-        departmentTable.put((int) department.getId(), departmentDB);
+        departmentTable.put( department.getId(), departmentDB);
 
     }
 
     //删除
-    public void delete(long id) {
+    public void delete(Integer id) {
         departmentTable.remove(id);
     }
 
-    //根据id查询
-    public Department getDepartmentById(long id) {
-        Department departmentDB = departmentTable.get(id);
-        return departmentDB;
-    }
+   */
 
     //返回所有数据
     public Collection<Department> getList() {
         return departmentTable.values();
+    }
+
+    //根据id查询
+    public Department getDepartmentById(Integer id) {
+        Department departmentDB = departmentTable.get(id);
+        return departmentDB;
     }
 }

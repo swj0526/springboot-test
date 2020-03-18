@@ -2,7 +2,9 @@ package com.swj.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.stereotype.Component;
 
 /**
  * @author 孙文举
@@ -11,8 +13,8 @@ import lombok.ToString;
  */
 @Data
 @AllArgsConstructor
-@ToString
+@NoArgsConstructor
 public class Department { //部门类
-    private long id;
+    private Integer id;
     private String name;
 }
