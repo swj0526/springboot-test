@@ -26,10 +26,10 @@ public class EmployeeService {
         employeeDao.add(employee);
     }
 
-    public Employee getEmployee(int id) {
+    public Employee getEmployee(Integer id) {
         return employeeDao.getEmployeeById(id);
     }
-    public void delete(int id){
+    public void delete(Integer id){
         employeeDao.delete(id);
     }
 }

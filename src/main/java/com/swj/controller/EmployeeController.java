@@ -35,10 +35,8 @@ public class EmployeeController {
 
     @RequestMapping("/toUpdate/{id}")
     public String toUpdate(Model model, @PathVariable("id") Integer id) {
-        System.out.println("bug==>"+id);
         Employee employee = employeeService.getEmployee(id);
         Collection<Department> departments = departmentService.getList();
-        System.out.println("bug==>"+employee);
         model.addAttribute("employee", employee);
         model.addAttribute("departments", departments);
         return "employee/update";  //只要是return,就不要加/.除非重定向

@@ -24,29 +24,31 @@ public class EmployeeDao { //初始化职工数据
     //初始化数据
     static {
         employeeTable = new HashMap<Integer, Employee>();
-        employeeTable.put(1, new Employee(1, 18, "于屁屁1号~", new Department(1, "教育部"),0));
-        employeeTable.put(2, new Employee(2, 22, "于屁屁2号~", new Department(2, "宣传部"),0));
-        employeeTable.put(3, new Employee(3, 43, "于屁屁3号~", new Department(3, "策划部"),1));
-        employeeTable.put(4, new Employee(4, 26, "于屁屁4号~", new Department(4, "教研部"),1));
-        employeeTable.put(5, new Employee(5, 12, "于屁屁5号~", new Department(5, "后勤部"),1));
+        employeeTable.put(1, new Employee(1, 18, "于屁屁1号~", new Department(1, "教育部"), 0));
+        employeeTable.put(2, new Employee(2, 22, "于屁屁2号~", new Department(2, "宣传部"), 0));
+        employeeTable.put(3, new Employee(3, 43, "于屁屁3号~", new Department(3, "策划部"), 1));
+        employeeTable.put(4, new Employee(4, 26, "于屁屁4号~", new Department(4, "教研部"), 1));
+        employeeTable.put(5, new Employee(5, 12, "于屁屁5号~", new Department(5, "后勤部"), 1));
 
     }
 
     //新增数据的时候要有主键新增
-    public int key() {
-        id++;
+    public Integer key() {
+        ++id;
         return id;
     }
 
     //新增 ,修改共用,因为用的map集合,只要有一个相同的id,就会替换原来的数据
     public void add(Employee employee) {
-        if(employee.getId()!=null){ //不等0,就代表就是有修改
-            employeeTable.put(employee.getId(),employee);
-        }else{
+        if (employee.getId() != null) { //不等0,就代表就是有修改
+            Integer id = employee.getDepartment().getId();//获取部门id;
+            employee.setDepartment(departmentDao.getDepartmentById(id));
+            employeeTable.put(employee.getId(), employee);
+        } else {
             employee.setId(key());
             Integer id = employee.getDepartment().getId();//获取部门id;
             employee.setDepartment(departmentDao.getDepartmentById(id));
-            employeeTable.put(key(), employee);
+            employeeTable.put(employee.getId(), employee);
         }
     }
 

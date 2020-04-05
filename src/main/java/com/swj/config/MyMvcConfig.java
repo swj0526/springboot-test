@@ -36,7 +36,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/static/**", "/", "/loginCheck");
+                .excludePathPatterns("/js/**", "/", "/loginCheck","/css/**","img/**");
         //  /**的意思是所有文件夹及里面的子文件夹
         //  /* 是所有文件夹，不含子文件夹
     }
